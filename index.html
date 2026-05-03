@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Foundery Prayer Wall</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="ember-container" id="emberContainer"></div>
+
+    <main id="app">
+        <header class="main-header">
+            <div class="logo-placeholder">
+                <div class="logo-icon">🔥</div>
+                <span>THE FOUNDERY CHURCH</span>
+            </div>
+            <h1>THE FOUNDERY <span>PRAYER WALL</span></h1>
+            <p class="subtitle">Pray with us throughout the week.</p>
+            <p class="intro-text">Every request represents someone God sees and someone we can cover together.</p>
+            
+            <div class="action-buttons">
+                <button class="btn btn-primary" onclick="openModal('requestModal')">SUBMIT A PRAYER REQUEST</button>
+                <button class="btn btn-secondary" onclick="openModal('answeredModal')">SHARE AN ANSWERED PRAYER</button>
+            </div>
+        </header>
+
+        <section class="focus-card">
+            <h3>THIS WEEK'S PRAYER FOCUS</h3>
+            <h2>Faith to Trust, Hearts to Unite</h2>
+            <p>We’re praying for deeper faith, stronger unity, and a church that reflects the love of Christ in our city.</p>
+            <div class="prayer-box">
+                "Lord, grow our faith, bind our hearts together, and use us to bring Your light to others. Amen."
+            </div>
+        </section>
+
+        <div class="stats-row">
+            <div class="stat-item">
+                <span class="stat-value" id="stat-lifted">0</span>
+                <span class="stat-label">Prayers Lifted This Week</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-value" id="stat-covered">0</span>
+                <span class="stat-label">Requests Being Covered</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-value" id="stat-answered">0</span>
+                <span class="stat-label">Answered Prayers This Month</span>
+            </div>
+        </div>
+
+        <nav class="filter-bar">
+            <div class="filter-chips" id="filterContainer">
+                </div>
+        </nav>
+
+        <section class="prayer-grid" id="prayerWall">
+            </section>
+
+        <footer class="main-footer">
+            <p>Your prayers make a difference. <br> Thank you for covering our church family.</p>
+            <p class="scripture">"Devote yourselves to prayer, being watchful and thankful." <span>COLOSSIANS 4:2</span></p>
+            <div class="crisis-note">If this is an emergency or crisis, please contact local emergency services immediately. Prayer support is not a replacement for emergency care.</div>
+            <button class="admin-link" onclick="toggleAdmin()">Prayer Team Admin</button>
+        </footer>
+    </main>
+
+    <div id="requestModal" class="modal">
+        <div class="modal-content">
+            <h3>Submit Prayer Request</h3>
+            <form id="prayerForm">
+                <label>Your Name (Optional)</label>
+                <input type="text" id="reqName" placeholder="Full Name">
+                
+                <label>Prayer Request*</label>
+                <textarea id="reqText" required placeholder="How can we pray for you?"></textarea>
+                
+                <div class="form-row">
+                    <div>
+                        <label>Category</label>
+                        <select id="reqCat">
+                            <option value="Urgent">Urgent</option>
+                            <option value="Healing">Healing</option>
+                            <option value="Family">Family</option>
+                            <option value="Anxiety">Anxiety</option>
+                            <option value="Provision">Provision</option>
+                            <option value="Salvation">Salvation</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label>Display As</label>
+                        <select id="reqDisplay">
+                            <option value="Anonymous">Anonymous</option>
+                            <option value="A Foundery Family">A Foundery Family</option>
+                            <option value="A Church Member">A Church Member</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <button type="submit" class="btn btn-primary">Submit Request</button>
+                <button type="button" class="btn btn-ghost" onclick="closeModal('requestModal')">Cancel</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="adminPanel" class="admin-drawer">
+        <div class="admin-header">
+            <h2>Admin Dashboard</h2>
+            <button onclick="toggleAdmin()">Close</button>
+        </div>
+        <div class="admin-controls">
+            <label><input type="checkbox" id="autoApprove" checked> Auto-Approve Demo Mode</label>
+        </div>
+        <div id="adminList"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
